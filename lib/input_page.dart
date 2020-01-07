@@ -3,11 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'icon_content.dart';
 import 'reusable_card.dart';
-
-const bottomContainerHerght = 80.0;
-const Color activeCardColor = Color(0xFF1D1E22);
-const Color inactivecolor = Color(0xFF111328);
-const Color bottomContianercolor = Color(0xFFEB1555);
+import 'constants.dart';
 
 enum Gender { male, female }
 
@@ -17,7 +13,7 @@ class InputPage extends StatefulWidget {
 }
 
 class _InputPageState extends State<InputPage> {
-  Gender UserGender;
+  Gender userGender;
 
   @override
   Widget build(BuildContext context) {
@@ -31,38 +27,34 @@ class _InputPageState extends State<InputPage> {
             child: Row(
               children: <Widget>[
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
-                        UserGender = Gender.male;
+                        userGender = Gender.male;
                       });
                     },
-                    child: ReusableCard(
-                      colour: UserGender == Gender.male
-                          ? activeCardColor
-                          : inactivecolor,
-                      childCard: CardContent(
-                        cardIcon: FontAwesomeIcons.mars,
-                        cardText: 'MALE',
-                      ),
+                    colour: userGender == Gender.male
+                        ? activeCardColor
+                        : inactivecolor,
+                    childCard: CardContent(
+                      cardIcon: FontAwesomeIcons.mars,
+                      cardText: 'MALE',
                     ),
                   ),
                 ),
                 Expanded(
-                  child: GestureDetector(
-                    onTap: () {
+                  child: ReusableCard(
+                    onPress: () {
                       setState(() {
-                        UserGender = Gender.female;
+                        userGender = Gender.female;
                       });
                     },
-                    child: ReusableCard(
-                      colour: UserGender == Gender.female
-                          ? activeCardColor
-                          : inactivecolor,
-                      childCard: CardContent(
-                        cardIcon: FontAwesomeIcons.venus,
-                        cardText: 'FEMALE',
-                      ),
+                    colour: userGender == Gender.female
+                        ? activeCardColor
+                        : inactivecolor,
+                    childCard: CardContent(
+                      cardIcon: FontAwesomeIcons.venus,
+                      cardText: 'FEMALE',
                     ),
                   ),
                 )
